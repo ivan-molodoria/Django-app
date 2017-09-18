@@ -1,0 +1,23 @@
+sudo: required #is required to use docker service in travis
+
+language: python #can be any language, just php for example
+python:
+  - "2.6"
+  - "2.7"
+services:
+  - docker # required, but travis uses older version of docker :(
+
+install:
+  - echo "install nothing!" # put your normal pre-testing installs here
+
+script:
+  - echo "no tests!" # put your normal testing scripts here
+
+after_success:
+  - docker --version  # document the version travis is using
+  - pip install --user awscli # install aws cli w/o sudo
+  - export PATH=$PATH:/root/.local/bin # put aws in the path
+  - eval $(aws ecr get-login --region us-east-1) #needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY envvars
+  - docker build -t test-repo .
+  - docker tag test-repo:latest 425987977703.dkr.ecr.us-west-2.amazonaws.com/test-repo:latest
+  - docker push 425987977703.dkr.ecr.us-west-2.amazonaws.com/test-repo:latest
