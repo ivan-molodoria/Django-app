@@ -1,5 +1,5 @@
 #!/bin/bash
-if [[ $TRAVIS_BRANCH == 'master' ]]
+if $TRAVIS_BRANCH == 'master' 
 then  
   sed -i '29,30 s/^/#/' .travis.yml
 else
