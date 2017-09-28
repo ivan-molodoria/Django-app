@@ -4,7 +4,7 @@ language: python #can be any language, just php for example
 python:
   - "2.7"
 
-before_script
+before_script:
   - echo $TRAVIS_BRANCH
 
 services:
