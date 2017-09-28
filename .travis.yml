@@ -3,15 +3,24 @@ sudo: required #is required to use docker service in travis
 language: python #can be any language, just php for example
 python:
   - "2.7"
+  
+env:
+  global:
+    - AWS_ACCESS_KEY_ID=1
+    - AWS_SECRET_ACCESS_KEY=1
+    - NODE_ENV=test
+
+env:
+  global:
+    - AWS_ACCESS_KEY_ID=2
+    -AWS_SECRET_ACCESS_KEY=2
+
 
 before_script:
   - echo $TRAVIS_BRANCH
 
-services:
-  - docker # required, but travis uses older version of docker :(
-
 install:
-  - echo "install nothing!" # put your normal pre-testing installs here
+  - echo $AWS_ACCESS_KEY_ID # put your normal pre-testing installs here
 
 script: 
 #  - sh script.sh
