@@ -23,7 +23,7 @@ install:
   - echo $AWS_ACCESS_KEY_ID # put your normal pre-testing installs here
 
 script: 
-  - sh script.sh
+  - bash script.sh
   - echo "no tests!" # put your normal testing scripts here
 
 after_success:
