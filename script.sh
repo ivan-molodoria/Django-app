@@ -1,6 +1,7 @@
 #!/bin/sh
-echo $TRAVIS_BRANCH 
-if [ "$TRAVIS_BRANCH" == master ]; 
+echo $TRAVIS_BRANCH
+echo $shell
+if [ "$TRAVIS_BRANCH" == "master" ]; 
 then  
   sed -i '29,30 s/^/#/' .travis.yml
 else
