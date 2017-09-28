@@ -10,7 +10,7 @@ install:
   - echo "install nothing!" # put your normal pre-testing installs here
 
 script: 
-  - script.sh
+  - sh script.sh
   - echo "no tests!" # put your normal testing scripts here
 
 after_success:
